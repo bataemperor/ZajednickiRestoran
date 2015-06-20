@@ -120,7 +120,7 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 		List<OpstiDomenskiObjekat> lista = new ArrayList();
 		while (rs.next()) {
 			int narudzbinaID = rs.getInt("NarudzbinaID");
-			Date datumNarudzbine = rs.getDate("DatumNarudzbine");
+			Date datumNarudzbine = rs.getTimestamp("DatumNarudzbine");
 			int brojStola = rs.getInt("BrojStola");
 			int ukupanIznos = rs.getInt("UkupanIznos");
 			String status = rs.getString("Status");
@@ -201,8 +201,8 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Sto: " + brojStola + ", status: " + status + ",racun: "
-				+ ukupanIznos + " Konobar: " + konobar.getUsername();
+		return "Sto: " + brojStola + ", datum: " + datumNarudzbine + ",racun: "
+				+ ukupanIznos;
 	}
 
 }
