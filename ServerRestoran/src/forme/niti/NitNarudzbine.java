@@ -1,5 +1,7 @@
 package forme.niti;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +59,9 @@ public class NitNarudzbine extends Thread {
 	public static synchronized void playSound() {
 		// zvucno obavestenje za novu narudzbinu
 	    try {
-	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("novaPorudzbina.wav"));
+	    	InputStream audioSrc = NitNarudzbine.class.getResourceAsStream("novaPorudzbina.wav");
+	    	InputStream bufferedIn = new BufferedInputStream(audioSrc);
+	    	AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
