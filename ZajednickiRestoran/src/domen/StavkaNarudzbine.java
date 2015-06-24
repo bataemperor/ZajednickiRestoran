@@ -81,7 +81,7 @@ public class StavkaNarudzbine implements Serializable, OpstiDomenskiObjekat {
 	}
 	@Override
 	public String toString() {
-		return proizvod.getNazivProizvoda()+" x"+kolicina;
+		return proizvod.getNazivProizvoda()+" x "+kolicina;
 	}
 
 	@Override
