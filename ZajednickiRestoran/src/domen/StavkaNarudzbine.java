@@ -149,7 +149,15 @@ public class StavkaNarudzbine implements Serializable, OpstiDomenskiObjekat {
 	@Override
 	public String vratiParametreZaUpdate() {
 		// TODO Auto-generated method stub
-		return null;
+		return 		"RbStavke= "+rbStavke
+				+ 	",Kolicina = '"
+				+	kolicina
+				+	"',Iznos = "
+				+	iznos 
+				+	",ProizvodID = "
+				+	proizvod.getProizvodID()
+				+	",Napomena = '"
+				+	napomena+"'";
 	}
 
 	@Override

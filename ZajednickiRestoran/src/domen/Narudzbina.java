@@ -156,9 +156,9 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 	public String vratiParametreZaUpdate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String datumNar = sdf.format(datumNarudzbine);
-		return "NarudzbinaID = '" + narudzbinaID + "', DatumNarudzbine = '"
-				+ datumNar + "',BrojStola= "+brojStola
-				+ ",UkupanIznos = '"+ukupanIznos+"',Status = '"
+		return 	"BrojStola= "+brojStola
+				+ ",UkupanIznos = '"
+				+ukupanIznos+"',Status = '"
 				+ status +"'";
 	}
 
