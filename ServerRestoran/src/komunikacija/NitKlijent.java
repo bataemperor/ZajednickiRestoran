@@ -119,6 +119,12 @@ public class NitKlijent extends Thread {
 			dialog.setTitle("Sto : "+narudzbina.getBrojStola());
 			dialog.setVisible(true);
 			NitNarudzbine.playSound();
+			break;
+		case Konstante.NAPLATI_NARUDZBINU:
+			System.out.println("O:"+Konstante.NAPLATI_NARUDZBINU);
+			Narudzbina narudzbinaZaNaplatu = (Narudzbina)toZahtev.getParametar();
+			Kontroler.getInstance().naplatiNarudzbinu(narudzbinaZaNaplatu);
+			toOdgovor.setOdgovor("Uspesno naplacena narudzbina! ID : "+ narudzbinaZaNaplatu.getNarudzbinaID());
 		}
 		posaljiOdgovor(toOdgovor);
 		socket.close();

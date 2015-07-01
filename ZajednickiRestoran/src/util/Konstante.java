@@ -9,6 +9,7 @@ public class Konstante {
 	public static final int OBRISI_NARUDZBINU = 5;
 	public static final int IZMENI_NARUDZBINU = 6;
 	public static final int PRETRAZI_NARUDZBINU = 7;
+	public static final int NAPLATI_NARUDZBINU = 19;
 	// PROIZVOD
 	public static final int VRATI_SVE_PROIZVODE = 8;
 	public static final int SACUVAJ_PROIZVOD = 9;

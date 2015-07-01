@@ -213,5 +213,20 @@ public class DatabaseBroker {
 			throw new RuntimeException("Neuspesno cuvanje izmena");
 		}
 	}
+	public void naplati(OpstiDomenskiObjekat odo){
+		try {
+			String sql = "UPDATE " + odo.vratiNazivTabeleZaUpdate() + " SET "
+						+ "Status = '"+odo.uslov2()+"'" + " WHERE "
+						+ odo.vratiNazivKolonePrimarnogKljuca() + " = "
+						+ odo.vratiSifru();
 
+			System.out.println(sql);
+			PreparedStatement sqlNaredba = connection.prepareStatement(sql);
+			sqlNaredba.executeUpdate();
+			sqlNaredba.close();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("Neuspesno cuvanje izmena");
+		}
+	}
 }

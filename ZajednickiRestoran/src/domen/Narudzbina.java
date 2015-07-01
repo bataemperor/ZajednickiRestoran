@@ -189,7 +189,7 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 	@Override
 	public String uslov2() {
 		// TODO Auto-generated method stub
-		return null;
+		return status;
 	}
 
 	@Override
