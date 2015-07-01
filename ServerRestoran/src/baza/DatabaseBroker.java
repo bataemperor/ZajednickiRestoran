@@ -10,6 +10,7 @@ import java.util.List;
 
 import domen.Konobar;
 import domen.OpstiDomenskiObjekat;
+import domen.StavkaNarudzbine;
 
 public class DatabaseBroker {
 	private Connection connection;
@@ -46,7 +47,7 @@ public class DatabaseBroker {
 			ex.printStackTrace();
 			throw new Exception("Greska prilikom uspostavljanja konekcije!");
 		}
-//		System.out.println("Uspesna konekcija!");
+		// System.out.println("Uspesna konekcija!");
 	}
 
 	public void commitTransakcije() throws RuntimeException {
@@ -78,7 +79,7 @@ public class DatabaseBroker {
 			String sql = "SELECT * FROM " + odo.vratiNazivTabele()
 					+ odo.uslov3();
 
-//			System.out.println(sql);
+			// System.out.println(sql);
 			Statement sqlNaredba = connection.createStatement();
 			ResultSet rs = sqlNaredba.executeQuery(sql);
 			return odo.vratiListu(rs);
@@ -92,7 +93,7 @@ public class DatabaseBroker {
 		try {
 			String sql = "SELECT * FROM " + odo.vratiNazivTabele()
 					+ odo.uslov() + odo.uslov3();
-//			System.out.println(sql);
+			// System.out.println(sql);
 			Statement sqlNaredba = connection.createStatement();
 			ResultSet rs = sqlNaredba.executeQuery(sql);
 			return odo.vratiListu(rs);
@@ -157,9 +158,16 @@ public class DatabaseBroker {
 			// " WHERE " + odo.vratiNazivKolonePrimarnogKljuca() + " = " +
 			// odo.vratiSifru();
 			// }
-			sql = "DELETE FROM " + odo.vratiNazivTabeleZaBrisanje() + " WHERE "
-					+ odo.vratiNazivKolonePrimarnogKljuca() + " = "
-					+ odo.vratiSifru();
+			if(odo instanceof StavkaNarudzbine){
+				sql = "DELETE FROM " + odo.vratiNazivTabeleZaBrisanje() + " WHERE "
+						+ odo.vratiNazivKolonePrimarnogKljuca() + " = "
+						+ odo.vratiSifru() + " AND RbStavke = "+odo.uslov2();
+			}
+			else{
+				sql = "DELETE FROM " + odo.vratiNazivTabeleZaBrisanje() + " WHERE "
+						+ odo.vratiNazivKolonePrimarnogKljuca() + " = "
+						+ odo.vratiSifru();
+			}
 			System.out.println(sql);
 			PreparedStatement sqlNaredba = connection.prepareStatement(sql);
 			sqlNaredba.executeUpdate();
@@ -178,7 +186,15 @@ public class DatabaseBroker {
 						+ odo.vratiParametreZaUpdate() + " WHERE "
 						+ odo.vratiNazivKolonePrimarnogKljuca() + " = '"
 						+ odo.uslov2() + "'";
-			} else {
+			}
+
+			else if (odo instanceof StavkaNarudzbine) {
+				sql = "UPDATE " + odo.vratiNazivTabeleZaUpdate() + " SET "
+						+ odo.vratiParametreZaUpdate() + " WHERE "
+						+ odo.vratiNazivKolonePrimarnogKljuca() + " = "
+						+ odo.vratiSifru() + " AND RbStavke = "+odo.uslov2();
+			}
+			else {
 				sql = "UPDATE " + odo.vratiNazivTabeleZaUpdate() + " SET "
 						+ odo.vratiParametreZaUpdate() + " WHERE "
 						+ odo.vratiNazivKolonePrimarnogKljuca() + " = "

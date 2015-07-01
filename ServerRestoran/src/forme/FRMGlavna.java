@@ -109,18 +109,7 @@ public class FRMGlavna {
 
 			}
 		});
-		// Timer timer = new Timer(0, new ActionListener() {
-		//
-		// @Override
-		// public void actionPerformed(ActionEvent e) {
-		// List<Narudzbina> listaNarudzbina =
-		// (List<Narudzbina>)(Object)Kontroler.getInstance().vratiSveNarudzbine();
-		// ModelListeNarudzbine mln = new ModelListeNarudzbine(listaNarudzbina);
-		// jlistNarudzbine.setModel(mln);
-		// }
-		// });
-		// timer.setDelay(3000); // delay for 30 seconds
-		// timer.start();
+
 	}
 
 	/**

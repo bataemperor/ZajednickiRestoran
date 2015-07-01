@@ -19,7 +19,10 @@ public class IzmeniNarudzbinuSO extends OpstaSO{
 		Narudzbina nar = (Narudzbina)obj;
 		DatabaseBroker.getInstance().izmeni(nar);
 		for (StavkaNarudzbine stavka : nar.getListaStavki()) {
-			DatabaseBroker.getInstance().izmeni(stavka);
+			DatabaseBroker.getInstance().obrisi(stavka);
+		}
+		for	(StavkaNarudzbine stavka : nar.getListaStavki()){
+			DatabaseBroker.getInstance().sacuvaj(stavka);
 		}
 	}
 

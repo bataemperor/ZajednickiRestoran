@@ -6,10 +6,14 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
 
+import javax.swing.JDialog;
+
 import domen.Konobar;
 import domen.Narudzbina;
 import domen.OpstiDomenskiObjekat;
 import domen.StavkaNarudzbine;
+import forme.FRMStavke;
+import forme.modeltabele.ModelTabeleNarudzbine;
 import poslovnalogika.Kontroler;
 import transfer.TransferObjekatOdgovor;
 import transfer.TransferObjekatZahtev;
@@ -40,6 +44,8 @@ public class NitKlijent extends Thread {
 		TransferObjekatZahtev toZahtev = (TransferObjekatZahtev) inSocket
 				.readObject();
 		TransferObjekatOdgovor toOdgovor = new TransferObjekatOdgovor();
+		FRMStavke dialog;
+		ModelTabeleNarudzbine mtn;
 		switch (toZahtev.getOperacija()) {
 		case Konstante.VRATI_SVE_PROIZVODE:
 			System.out.println("O:" + Konstante.VRATI_SVE_PROIZVODE);
@@ -90,7 +96,25 @@ public class NitKlijent extends Thread {
 			n.setNarudzbinaID(Kontroler.getInstance().vratiIDNarudzbine());
 			Kontroler.getInstance().sacuvajNarudzbinu(n);
 			toOdgovor.setOdgovor("Uspesno poslata narudzbina");
+			
+			//otvaranje forme kada stigne nova narudzbina
+			mtn = new ModelTabeleNarudzbine(n);
+			dialog = new FRMStavke(mtn);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+			
 			break;
+		case Konstante.IZMENI_NARUDZBINU:
+			System.out.println("O:"+Konstante.IZMENI_NARUDZBINU);
+			Narudzbina narudzbina = (Narudzbina)toZahtev.getParametar();
+			Kontroler.getInstance().izmeniNarudzbinu(narudzbina);
+			toOdgovor.setOdgovor("Uspesno izmenjena narudbina : "+narudzbina.getNarudzbinaID());
+				
+			//otvaranje forme kada se izmeni narudzbina
+			mtn = new ModelTabeleNarudzbine(narudzbina);
+			dialog = new FRMStavke(mtn);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
 		}
 		posaljiOdgovor(toOdgovor);
 		socket.close();
