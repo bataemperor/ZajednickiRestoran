@@ -102,6 +102,7 @@ public class FRMGlavna {
 						FRMStavke dialog = new FRMStavke(mtn);
 						dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 						dialog.setVisible(true);
+						dialog.setTitle("Sto : " + mtn.getNarudzbina().getBrojStola());
 						jlistNarudzbine.clearSelection();
 					}
 

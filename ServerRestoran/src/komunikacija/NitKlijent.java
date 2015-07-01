@@ -14,6 +14,7 @@ import domen.OpstiDomenskiObjekat;
 import domen.StavkaNarudzbine;
 import forme.FRMStavke;
 import forme.modeltabele.ModelTabeleNarudzbine;
+import forme.niti.NitNarudzbine;
 import poslovnalogika.Kontroler;
 import transfer.TransferObjekatOdgovor;
 import transfer.TransferObjekatZahtev;
@@ -101,6 +102,7 @@ public class NitKlijent extends Thread {
 			mtn = new ModelTabeleNarudzbine(n);
 			dialog = new FRMStavke(mtn);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setTitle("Sto : "+n.getBrojStola());
 			dialog.setVisible(true);
 			
 			break;
@@ -114,7 +116,9 @@ public class NitKlijent extends Thread {
 			mtn = new ModelTabeleNarudzbine(narudzbina);
 			dialog = new FRMStavke(mtn);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setTitle("Sto : "+narudzbina.getBrojStola());
 			dialog.setVisible(true);
+			NitNarudzbine.playSound();
 		}
 		posaljiOdgovor(toOdgovor);
 		socket.close();

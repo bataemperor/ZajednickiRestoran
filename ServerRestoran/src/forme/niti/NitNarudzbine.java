@@ -39,6 +39,7 @@ public class NitNarudzbine extends Thread {
 								narudzbina.getNarudzbinaID());
 				narudzbina.setListaStavki(listaStavki);
 			}
+			jlistaNarudzbina.setModel(new ModelListeNarudzbine(listaNarudzbina));
 			if (!(listaNarudzbina.size() == listaNarudzbinaTrenutna.size())) {
 				listaNarudzbinaTrenutna = listaNarudzbina;
 				ModelListeNarudzbine mln = new ModelListeNarudzbine(
