@@ -129,7 +129,10 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 			k.setUsername(username);
 			Narudzbina n = new Narudzbina(narudzbinaID, datumNarudzbine,
 					brojStola, ukupanIznos, status, k);
-			lista.add(n);
+			if(!"Placena".equalsIgnoreCase(status)){
+				lista.add(n);
+			}
+			
 		}
 		return lista;
 	}
@@ -165,7 +168,7 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 	@Override
 	public String vratiNazivTabeleZaBrisanje() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Narudzbina";
 	}
 
 	@Override

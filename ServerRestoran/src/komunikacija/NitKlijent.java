@@ -78,53 +78,64 @@ public class NitKlijent extends Thread {
 				toOdgovor.setOdgovor("Ok lista organizacija");
 			}
 			break;
-		case  Konstante.PRONADJI_KONOBARE:
+		case Konstante.PRONADJI_KONOBARE:
 			System.out.println("O:" + Konstante.PRONADJI_KONOBARE);
 			Konobar k = (Konobar) toZahtev.getParametar();
 			boolean postoji = Kontroler.getInstance().pronadjiKonobare(k);
 			toOdgovor.setRezultat(postoji);
-			if (postoji==false) {
+			if (postoji == false) {
 				toOdgovor.setOdgovor("Ne postoji konobar u bazi");
-			}
-			else {
+			} else {
 				toOdgovor.setOdgovor("Uspesno ste se ulogovali");
 
 			}
 			break;
 		case Konstante.SACUVAJ_NARUDZBINU:
-			System.out.println("O:"+Konstante.SACUVAJ_NARUDZBINU);
-			Narudzbina n =  (Narudzbina) toZahtev.getParametar();
+			System.out.println("O:" + Konstante.SACUVAJ_NARUDZBINU);
+			Narudzbina n = (Narudzbina) toZahtev.getParametar();
 			n.setNarudzbinaID(Kontroler.getInstance().vratiIDNarudzbine());
 			Kontroler.getInstance().sacuvajNarudzbinu(n);
 			toOdgovor.setOdgovor("Uspesno poslata narudzbina");
-			
-			//otvaranje forme kada stigne nova narudzbina
+
+			// otvaranje forme kada stigne nova narudzbina
 			mtn = new ModelTabeleNarudzbine(n);
 			dialog = new FRMStavke(mtn);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setTitle("Sto : "+n.getBrojStola());
+			dialog.setTitle("Sto : " + n.getBrojStola());
 			dialog.setVisible(true);
-			
+
 			break;
 		case Konstante.IZMENI_NARUDZBINU:
-			System.out.println("O:"+Konstante.IZMENI_NARUDZBINU);
-			Narudzbina narudzbina = (Narudzbina)toZahtev.getParametar();
+			System.out.println("O:" + Konstante.IZMENI_NARUDZBINU);
+			Narudzbina narudzbina = (Narudzbina) toZahtev.getParametar();
 			Kontroler.getInstance().izmeniNarudzbinu(narudzbina);
-			toOdgovor.setOdgovor("Uspesno izmenjena narudbina : "+narudzbina.getNarudzbinaID());
-				
-			//otvaranje forme kada se izmeni narudzbina
+			toOdgovor.setOdgovor("Uspesno izmenjena narudbina : "
+					+ narudzbina.getNarudzbinaID());
+
+			// otvaranje forme kada se izmeni narudzbina
 			mtn = new ModelTabeleNarudzbine(narudzbina);
 			dialog = new FRMStavke(mtn);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setTitle("Sto : "+narudzbina.getBrojStola());
+			dialog.setTitle("Sto : " + narudzbina.getBrojStola());
 			dialog.setVisible(true);
 			NitNarudzbine.playSound();
 			break;
 		case Konstante.NAPLATI_NARUDZBINU:
-			System.out.println("O:"+Konstante.NAPLATI_NARUDZBINU);
-			Narudzbina narudzbinaZaNaplatu = (Narudzbina)toZahtev.getParametar();
+			System.out.println("O:" + Konstante.NAPLATI_NARUDZBINU);
+			Narudzbina narudzbinaZaNaplatu = (Narudzbina) toZahtev
+					.getParametar();
 			Kontroler.getInstance().naplatiNarudzbinu(narudzbinaZaNaplatu);
-			toOdgovor.setOdgovor("Uspesno naplacena narudzbina! ID : "+ narudzbinaZaNaplatu.getNarudzbinaID());
+			toOdgovor.setOdgovor("Uspesno naplacena narudzbina! ID : "
+					+ narudzbinaZaNaplatu.getNarudzbinaID());
+			break;
+		case Konstante.OBRISI_NARUDZBINU:
+			System.out.println("O:" + Konstante.OBRISI_NARUDZBINU);
+			Narudzbina narudzbinaZaBrisanje = (Narudzbina) toZahtev
+					.getParametar();
+			Kontroler.getInstance().obrisiNarudzbinu(narudzbinaZaBrisanje);
+			toOdgovor.setOdgovor("Uspesno obrisana narudzbina! ID : "
+					+ narudzbinaZaBrisanje.getNarudzbinaID());
+			break;
 		}
 		posaljiOdgovor(toOdgovor);
 		socket.close();

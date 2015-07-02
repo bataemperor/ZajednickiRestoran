@@ -9,6 +9,7 @@ import poslovnalogika.so.konobar.SacuvajKonobaraSO;
 import poslovnalogika.so.konobar.VratiSveKonobareSO;
 import poslovnalogika.so.narudzbina.IzmeniNarudzbinuSO;
 import poslovnalogika.so.narudzbina.NaplatiNarudzbinuSO;
+import poslovnalogika.so.narudzbina.ObrisiNarudzbinuSO;
 import poslovnalogika.so.narudzbina.SacuvajNarudzbinuSO;
 import poslovnalogika.so.narudzbina.VratiIDNarudzbineSO;
 import poslovnalogika.so.narudzbina.VratiSveNarudzbineSO;
@@ -116,6 +117,10 @@ public class Kontroler {
 	public void naplatiNarudzbinu(Narudzbina n){
 		NaplatiNarudzbinuSO naplatiNarudzbinuSO = new NaplatiNarudzbinuSO();
 		naplatiNarudzbinuSO.izvrsiOperaciju(n);
+	}
+	public void obrisiNarudzbinu(Narudzbina n){
+		ObrisiNarudzbinuSO obrisiNarudzbinuSO = new ObrisiNarudzbinuSO();
+		obrisiNarudzbinuSO.izvrsiOperaciju(n);
 	}
 	
 }
