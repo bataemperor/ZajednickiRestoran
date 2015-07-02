@@ -39,8 +39,8 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 	public Narudzbina() {
 		this.listaStavki = new ArrayList<StavkaNarudzbine>();
 		konobar = new Konobar();
-		konobar.setUsername("neki user");
-		status = "placen";
+		konobar.setUsername("Aleksandar");
+		status = "Neplacena";
 	}
 
 	public void izracunajUkupanIznos() {
