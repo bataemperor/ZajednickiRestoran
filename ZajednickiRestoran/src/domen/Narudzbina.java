@@ -205,8 +205,8 @@ public class Narudzbina implements Serializable, OpstiDomenskiObjekat {
 	public String toString() {
 		// TODO Auto-generated method stub
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		return "Sto: " + brojStola +",             Vreme: " + sdf.format(datumNarudzbine) +",               racun: "
-				+ ukupanIznos;
+		return "Sto : " + brojStola +",     Vreme : " + sdf.format(datumNarudzbine) +",     Racun : "
+				+ ukupanIznos+",     Konobar : "+konobar.getUsername();
 	}
 
 }

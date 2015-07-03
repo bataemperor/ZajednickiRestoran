@@ -18,6 +18,7 @@ import java.util.List;
 import komunikacija.ServerskaNit;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
@@ -49,6 +50,7 @@ import domen.StavkaNarudzbine;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 
 public class FRMGlavna {
 
@@ -80,6 +82,7 @@ public class FRMGlavna {
 		initialize();
 		pokreniServer();
 		osvezavajFormu();
+		
 	}
 
 	private void osvezavajFormu() {
@@ -121,11 +124,14 @@ public class FRMGlavna {
 		frame.setBounds(100, 100, 889, 659);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
+		frame.setTitle("Lista Narudzbina");
+		//postavljanje ikonice na Jframe
+		ImageIcon img = new ImageIcon("fud.png");
+		frame.setIconImage(img.getImage());
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 1216, 21);
 		frame.getContentPane().add(menuBar);
-
+		
 		jmProizvod = new JMenu("Proizvodi");
 		menuBar.add(jmProizvod);
 
@@ -145,6 +151,9 @@ public class FRMGlavna {
 			public void actionPerformed(ActionEvent arg0) {
 				FRMPregledProizvoda frmPregledProizvoda = new FRMPregledProizvoda();
 				frmPregledProizvoda.setVisible(true);
+				//postavljanje ikonice na FrmPregledProizvoda
+				ImageIcon img = new ImageIcon("fud.png");
+				frmPregledProizvoda.setIconImage(img.getImage());
 				frmPregledProizvoda
 						.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frmPregledProizvoda.setTitle("Pregled proizvoda");
@@ -160,6 +169,9 @@ public class FRMGlavna {
 			public void actionPerformed(ActionEvent e) {
 				FRMUnosKonobara frmUnosKonobara = new FRMUnosKonobara();
 				frmUnosKonobara.setVisible(true);
+				//postavljanje ikonice na FRMUnosKonobara
+				ImageIcon img = new ImageIcon("fud.png");
+				frmUnosKonobara.setIconImage(img.getImage());
 				frmUnosKonobara
 						.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frmUnosKonobara.setTitle("Unos novog konobara");
@@ -172,6 +184,9 @@ public class FRMGlavna {
 			public void actionPerformed(ActionEvent arg0) {
 				FRMPregledKonobara frmPregledKonobara = new FRMPregledKonobara();
 				frmPregledKonobara.setVisible(true);
+				//postavljanje ikonice na FrmPregledKonobara
+				ImageIcon img = new ImageIcon("fud.png");
+				frmPregledKonobara.setIconImage(img.getImage());
 				frmPregledKonobara
 						.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frmPregledKonobara.setTitle("Pregled konobara");
@@ -187,6 +202,9 @@ public class FRMGlavna {
 			public void actionPerformed(ActionEvent arg0) {
 				FRMUnosNoveNarudzbine frmUnosNoveNarudzbine = new FRMUnosNoveNarudzbine();
 				frmUnosNoveNarudzbine.setVisible(true);
+				//postavljanje ikonice na FrmUnosNoveNarudzbine
+				ImageIcon img = new ImageIcon("fud.png");
+				frmUnosNoveNarudzbine.setIconImage(img.getImage());
 				frmUnosNoveNarudzbine
 						.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frmUnosNoveNarudzbine.setTitle("Unos nove narudzbine");
@@ -208,4 +226,5 @@ public class FRMGlavna {
 		ServerskaNit serverskaNit = new ServerskaNit();
 		serverskaNit.start();
 	}
+	
 }
