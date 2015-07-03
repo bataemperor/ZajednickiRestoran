@@ -101,8 +101,9 @@ public class NitKlijent extends Thread {
 			mtn = new ModelTabeleNarudzbine(n);
 			dialog = new FRMStavke(mtn);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setTitle("Sto : " + n.getBrojStola());
+			dialog.setTitle("Nova Narudzbina ! Broj Stola : " + n.getBrojStola());
 			dialog.setVisible(true);
+			NitNarudzbine.playSound();
 
 			break;
 		case Konstante.IZMENI_NARUDZBINU:
@@ -116,7 +117,7 @@ public class NitKlijent extends Thread {
 			mtn = new ModelTabeleNarudzbine(narudzbina);
 			dialog = new FRMStavke(mtn);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setTitle("Sto : " + narudzbina.getBrojStola());
+			dialog.setTitle("Izmena narudzbine ! Broj Stola : " + narudzbina.getBrojStola());
 			dialog.setVisible(true);
 			NitNarudzbine.playSound();
 			break;

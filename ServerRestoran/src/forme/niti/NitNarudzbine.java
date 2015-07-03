@@ -45,12 +45,12 @@ public class NitNarudzbine extends Thread {
 				ModelListeNarudzbine mln = new ModelListeNarudzbine(
 						listaNarudzbinaTrenutna);
 				jlistaNarudzbina.setModel(mln);
-				playSound();
+//				playSound();
 
 			}
 
 			try {
-				Thread.sleep(10000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
